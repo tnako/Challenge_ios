@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		52EB7FD8CC6112FE4F7614D1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB67A13E9D9DFA1B1A98E90 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		837BF8681BB83BB2005D5B30 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837BF8671BB83BB2005D5B30 /* ChallengeTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		837BF86A1BB84683005D5B30 /* TakePhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837BF8691BB84683005D5B30 /* TakePhotoController.swift */; settings = {ASSET_TAGS = (); }; };
 		83A22AC21BB503A7006BD898 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A22AC11BB503A7006BD898 /* AppDelegate.swift */; };
 		83A22AC41BB503A7006BD898 /* ChallengesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A22AC31BB503A7006BD898 /* ChallengesController.swift */; };
 		83A22AC61BB503A7006BD898 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A22AC51BB503A7006BD898 /* ProfileController.swift */; };
@@ -20,6 +22,8 @@
 
 /* Begin PBXFileReference section */
 		4DB67A13E9D9DFA1B1A98E90 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		837BF8671BB83BB2005D5B30 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
+		837BF8691BB84683005D5B30 /* TakePhotoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoController.swift; sourceTree = "<group>"; };
 		83A22ABE1BB503A7006BD898 /* Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83A22AC11BB503A7006BD898 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83A22AC31BB503A7006BD898 /* ChallengesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesController.swift; sourceTree = "<group>"; };
@@ -92,7 +96,9 @@
 				83A22AC31BB503A7006BD898 /* ChallengesController.swift */,
 				83A22AC51BB503A7006BD898 /* ProfileController.swift */,
 				83A22AD61BB5C31D006BD898 /* ChallengesTableViewCell.swift */,
+				837BF8671BB83BB2005D5B30 /* ChallengeTableViewCell.swift */,
 				83A22AD81BB65FF0006BD898 /* ChallengeDetailViewController.swift */,
+				837BF8691BB84683005D5B30 /* TakePhotoController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -229,8 +235,10 @@
 				83A22AC61BB503A7006BD898 /* ProfileController.swift in Sources */,
 				83A22AD71BB5C31D006BD898 /* ChallengesTableViewCell.swift in Sources */,
 				83A22AD91BB65FF0006BD898 /* ChallengeDetailViewController.swift in Sources */,
+				837BF8681BB83BB2005D5B30 /* ChallengeTableViewCell.swift in Sources */,
 				83A22AC21BB503A7006BD898 /* AppDelegate.swift in Sources */,
 				83A22AC41BB503A7006BD898 /* ChallengesController.swift in Sources */,
+				837BF86A1BB84683005D5B30 /* TakePhotoController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

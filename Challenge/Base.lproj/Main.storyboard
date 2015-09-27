@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -70,7 +69,7 @@
                                             <outlet property="HeaderLabel" destination="Nqw-I1-mzG" id="cap-9U-SaT"/>
                                             <outlet property="ProgressBar" destination="Enk-AL-yoM" id="XX8-yr-DJI"/>
                                             <outlet property="TimerLabel" destination="PW3-Td-97e" id="g9J-9V-t3d"/>
-                                            <segue destination="j1d-X4-g5b" kind="show" id="8oy-VU-7yY"/>
+                                            <segue destination="j1d-X4-g5b" kind="show" identifier="ShowChallenge" id="8oy-VU-7yY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -104,26 +103,19 @@
         <scene sceneID="dA8-0m-c7a">
             <objects>
                 <tableViewController id="j1d-X4-g5b" customClass="ChallengeDetailViewController" customModule="Challenge" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="hKQ-dj-4XR">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="350" sectionHeaderHeight="28" sectionFooterHeight="28" id="hKQ-dj-4XR">
                         <rect key="frame" x="0.0" y="0.0" width="404" height="682"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="350" id="ZUb-h1-DuW">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PhotoRow" id="ZUb-h1-DuW" customClass="ChallengeTableViewCell" customModule="Challenge" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="404" height="350"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZUb-h1-DuW" id="mfT-fz-n2D">
                                     <rect key="frame" x="0.0" y="0.0" width="404" height="349.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="camaro_512" translatesAutoresizingMaskIntoConstraints="NO" id="LZb-QK-IY7">
-                                            <rect key="frame" x="8" y="8.5" width="388" height="389"/>
-                                            <animations/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="LZb-QK-IY7" secondAttribute="height" multiplier="1:1" id="TXA-4H-gem"/>
-                                            </constraints>
-                                        </imageView>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLJ-E1-ZXN">
                                             <rect key="frame" x="8" y="8" width="31.5" height="19.5"/>
                                             <animations/>
@@ -133,6 +125,10 @@
                                             <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="shadowOffset" width="0.0" height="1"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LZb-QK-IY7">
+                                            <rect key="frame" x="8" y="8" width="388" height="389"/>
+                                            <animations/>
+                                        </imageView>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" misplaced="YES" text="Subtitle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QXf-Pe-gII">
                                             <rect key="frame" x="340" y="8" width="56" height="19.5"/>
                                             <animations/>
@@ -158,6 +154,11 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <outlet property="Imager" destination="LZb-QK-IY7" id="L3Q-UP-b8g"/>
+                                    <outlet property="Subtitle" destination="QXf-Pe-gII" id="7rw-BP-7ev"/>
+                                    <outlet property="Title" destination="KLJ-E1-ZXN" id="7wH-FH-wTp"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -168,12 +169,65 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Challenge Photo" id="1hT-A8-UkA">
                         <barButtonItem key="backBarButtonItem" title="Back" id="ZzU-qx-4Cb"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="xu6-ac-KK4"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="xu6-ac-KK4">
+                            <connections>
+                                <segue destination="6t8-FU-7CM" kind="show" id="cGL-2S-BBH"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="PhotoTable" destination="hKQ-dj-4XR" id="1yK-of-CxY"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UdQ-ol-siz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2082" y="-437"/>
+        </scene>
+        <!--Take Photo Controller-->
+        <scene sceneID="UbI-HM-lfU">
+            <objects>
+                <viewController id="6t8-FU-7CM" customClass="TakePhotoController" customModule="Challenge" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3u8-G8-lZr"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xci-SS-eRf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bGr-Qb-3Zh">
+                        <rect key="frame" x="0.0" y="0.0" width="404" height="682"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iUE-8E-1zV">
+                                <rect key="frame" x="20" y="64" width="364" height="514"/>
+                                <animations/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJg-nE-DyJ" userLabel="Take Photo">
+                                <rect key="frame" x="10" y="598" width="384" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Post Photo"/>
+                                <connections>
+                                    <segue destination="YeG-VA-dCR" kind="unwind" unwindAction="saveNewPhoto:" id="wN9-nc-Cvj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VJg-nE-DyJ" firstAttribute="leading" secondItem="bGr-Qb-3Zh" secondAttribute="leading" constant="10" id="5QR-ed-ung"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iUE-8E-1zV" secondAttribute="trailing" id="5lJ-uQ-1kY"/>
+                            <constraint firstItem="iUE-8E-1zV" firstAttribute="leading" secondItem="bGr-Qb-3Zh" secondAttribute="leadingMargin" id="hvv-Jd-pAR"/>
+                            <constraint firstItem="iUE-8E-1zV" firstAttribute="top" secondItem="3u8-G8-lZr" secondAttribute="bottom" id="k7G-qe-BTY"/>
+                            <constraint firstItem="VJg-nE-DyJ" firstAttribute="top" secondItem="iUE-8E-1zV" secondAttribute="bottom" constant="20" id="lr8-61-eV1"/>
+                            <constraint firstAttribute="trailing" secondItem="VJg-nE-DyJ" secondAttribute="trailing" constant="10" id="m5D-0I-kbt"/>
+                            <constraint firstItem="Xci-SS-eRf" firstAttribute="top" secondItem="VJg-nE-DyJ" secondAttribute="bottom" constant="10" id="yPO-iw-imQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="iUE-8E-1zV" id="Ng7-4a-bjr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tal-Fe-jUA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="YeG-VA-dCR" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2630" y="-433"/>
         </scene>
         <!--Profile-->
         <scene sceneID="wg7-f3-ORb">
@@ -266,7 +320,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="camaro_512" width="512" height="512"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>

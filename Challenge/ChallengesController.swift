@@ -36,9 +36,10 @@ struct Challenge {
 
 class ChallengesController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet var ChallengesTable: UITableView!
+    @IBOutlet var ChallengesTable: UITableView!;
     
     var ChallengesArray = [Challenge]()
+    //var SelectedRow:Int?;
 
     
     override func viewDidLoad() {
@@ -74,11 +75,19 @@ class ChallengesController: UIViewController, UITableViewDataSource, UITableView
         cell.HeaderLabel?.text = "Quest #\(ChallengesArray[row].num!)";
         
         let minutes:UInt = UInt(ChallengesArray[row].end!.time);
+      
+        if (minutes > 90 || minutes < 10) {
+            // проголосовал сам или учавствовал
+            cell.accessoryType = .Checkmark;
+        } else {
+            cell.accessoryType = .DisclosureIndicator;
+        }
         
         if (minutes > 70) {
             cell.backgroundColor = UIColor(red: 1, green: 165/255, blue: 0, alpha: 1);
             cell.TimerLabel.text = "Start in \(minutes) minute";
             cell.ProgressBar.progress = Float(minutes) / 100.0;
+
         } else {
             cell.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1);
             cell.TimerLabel.text = "Ends in \(minutes) minute";
@@ -86,6 +95,26 @@ class ChallengesController: UIViewController, UITableViewDataSource, UITableView
         }
         
         return cell
+    }
+    /*
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        ChallengesTable.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        SelectedRow = indexPath.row;
+    }
+    */
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowChallenge" {
+            print("ShowChallenge debug");
+            if let indexPath = self.ChallengesTable.indexPathForSelectedRow {
+                let challenge = ChallengesArray[indexPath.row];
+                let controller = segue.destinationViewController as! ChallengeDetailViewController;
+                //controller.PhotoArray.append("Quest #\(challenge.num!)");
+                //ToDo: передача номера квеста
+            }
+        }
+
     }
 
 }
