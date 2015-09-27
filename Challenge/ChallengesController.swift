@@ -13,19 +13,20 @@ import UIKit
 
 struct Challenge {
     var num: UInt?;
+    var action: String?;
     var start: timeb?;
-    var end: timeb;
-    var action: String;
+    var end: timeb?;
     var item: String?;
     var place: String?;
     var person: String?;
     
-    init(num: UInt?, start: timeb?, end: timeb,
-        action: String, item: String?, place: String?, person: String?) {
+    init(num: UInt?, action: String?,
+        start: timeb?, end: timeb?,
+        item: String?, place: String?, person: String?) {
             self.num = num;
+            self.action = action;
             self.start = start;
             self.end = end;
-            self.action = action;
             self.item = item;
             self.place = place;
             self.person = person;
@@ -37,14 +38,16 @@ class ChallengesController: UIViewController, UITableViewDataSource, UITableView
 
     @IBOutlet var ChallengesTable: UITableView!
     
-    var ChallengesArray = [String]()
+    var ChallengesArray = [Challenge]()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for index in 1...62 {
-            ChallengesArray.append("Quest #\(index)")
+        for index:UInt in 1...62 {
+            var endDate:timeb = timeb();
+            endDate.time  = time_t(arc4random_uniform(98) + 1);
+            ChallengesArray.append(Challenge(num: index, action: "drink", start: timeb(), end: endDate, item: "", place: "", person: ""));
         }
         
         ChallengesTable.delegate = self
@@ -68,15 +71,16 @@ class ChallengesController: UIViewController, UITableViewDataSource, UITableView
         let cell = ChallengesTable.dequeueReusableCellWithIdentifier("OneRow", forIndexPath: indexPath) as! ChallengesTableViewCell
         
         let row = indexPath.row
-        cell.HeaderLabel?.text = ChallengesArray[row]
+        cell.HeaderLabel?.text = "Quest #\(ChallengesArray[row].num!)";
         
-        let minutes = arc4random_uniform(98) + 1;
+        let minutes:UInt = UInt(ChallengesArray[row].end!.time);
         
         if (minutes > 70) {
             cell.backgroundColor = UIColor(red: 1, green: 165/255, blue: 0, alpha: 1);
             cell.TimerLabel.text = "Start in \(minutes) minute";
             cell.ProgressBar.progress = Float(minutes) / 100.0;
         } else {
+            cell.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1);
             cell.TimerLabel.text = "Ends in \(minutes) minute";
             cell.ProgressBar.progress = 1 - Float(minutes) / 100.0;
         }
