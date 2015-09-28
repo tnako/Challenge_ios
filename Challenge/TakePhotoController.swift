@@ -30,7 +30,12 @@ class TakePhotoController: UIViewController, UIImagePickerControllerDelegate, UI
     
     func MakeImage() {
         imagePicker.allowsEditing = false;
-        imagePicker.sourceType = .PhotoLibrary;
+        
+        if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
+            imagePicker.sourceType = .Camera;
+        } else {
+            imagePicker.sourceType = .PhotoLibrary;
+        }
 
         
         presentViewController(imagePicker, animated: true, completion: nil);
