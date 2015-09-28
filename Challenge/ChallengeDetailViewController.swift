@@ -9,11 +9,7 @@
 import UIKit
 
 
-struct ImageRow {
-    var Title: String;
-    var Subtitle: String;
-    var Imager: UIImage;
-}
+
 
 
 /* detail scene view controller
@@ -27,7 +23,8 @@ class ChallengeDetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        PhotoArray.append(ImageRow(Title: "Lorem", Subtitle: "Bla bla", Imager: UIImage(named: "camaro_512")!));
+        PhotoArray.append(ImageRow(Title: "Lorem", Imager: UIImage(named: "camaro_512")!, Likes: UInt(arc4random_uniform(980))));
+        PhotoArray.append(ImageRow(Title: "Blah", Imager: UIImage(named: "camaro_512")!, Likes: UInt(arc4random_uniform(980))));
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -42,10 +39,8 @@ class ChallengeDetailViewController: UITableViewController {
         let cell = PhotoTable.dequeueReusableCellWithIdentifier("PhotoRow", forIndexPath: indexPath) as! ChallengeTableViewCell
         
         let row = indexPath.row;
-        cell.Subtitle.text = PhotoArray[row].Subtitle;
-        cell.Title.text = PhotoArray[row].Title;
-        cell.Imager.image = PhotoArray[row].Imager;
-
+        cell.CurrentImage = PhotoArray[row];
+        cell.SetRowData();
         
         return cell
     }
@@ -55,12 +50,14 @@ class ChallengeDetailViewController: UITableViewController {
         if let controller = segue.sourceViewController as? TakePhotoController {
             
             //PhotoArray.append(controller.imageView.image!.description);
-            PhotoArray.append(ImageRow(Title: "New", Subtitle: "One", Imager: controller.imageView.image!));
+            PhotoArray.append(ImageRow(Title: "User Blah", Imager: controller.imageView.image!, Likes: UInt(arc4random_uniform(980))));
             PhotoTable.reloadData()
             //PhotoTable.insertRowsAtIndexPaths(PhotoTable.indexPathsForVisibleRows!, withRowAnimation: UITableViewRowAnimation.Automatic)
 
         }
     }
+    
+
     
 }
 

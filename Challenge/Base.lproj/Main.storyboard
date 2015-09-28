@@ -116,28 +116,37 @@
                                     <rect key="frame" x="0.0" y="0.0" width="404" height="349.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLJ-E1-ZXN">
-                                            <rect key="frame" x="8" y="8" width="31.5" height="19.5"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                            <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="shadowOffset" width="0.0" height="1"/>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LZb-QK-IY7">
-                                            <rect key="frame" x="8" y="8" width="388" height="389"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LZb-QK-IY7">
+                                            <rect key="frame" x="8" y="8" width="388" height="333.5"/>
                                             <animations/>
                                         </imageView>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" misplaced="YES" text="Subtitle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QXf-Pe-gII">
-                                            <rect key="frame" x="340" y="8" width="56" height="19.5"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLJ-E1-ZXN">
+                                            <rect key="frame" x="8" y="8" width="32.5" height="20.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
-                                            <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="shadowOffset" width="0.0" height="1"/>
+                                            <color key="shadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                            <size key="shadowOffset" width="-1" height="1"/>
                                         </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QXf-Pe-gII">
+                                            <rect key="frame" x="339" y="8" width="57" height="20.5"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                            <color key="shadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                            <size key="shadowOffset" width="-1" height="1"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMV-Re-KbB">
+                                            <rect key="frame" x="38" y="0.0" width="328" height="32"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <state key="normal" title="Like"/>
+                                            <connections>
+                                                <action selector="PressedLike" destination="ZUb-h1-DuW" eventType="touchUpInside" id="Gp6-ST-8Sx"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <animations/>
                                     <constraints>
@@ -147,15 +156,19 @@
                                         <constraint firstItem="QXf-Pe-gII" firstAttribute="top" secondItem="mfT-fz-n2D" secondAttribute="topMargin" id="HZw-ym-XU6"/>
                                         <constraint firstItem="KLJ-E1-ZXN" firstAttribute="leading" secondItem="mfT-fz-n2D" secondAttribute="leadingMargin" id="NzX-KS-0El"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="LZb-QK-IY7" secondAttribute="bottom" id="PYA-AX-41O"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="NMV-Re-KbB" secondAttribute="trailing" constant="30" id="dnA-fH-VoZ"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="LZb-QK-IY7" secondAttribute="trailing" id="g3V-co-OLb"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="QXf-Pe-gII" secondAttribute="trailing" id="gI6-6E-OGd"/>
+                                        <constraint firstItem="NMV-Re-KbB" firstAttribute="leading" secondItem="mfT-fz-n2D" secondAttribute="leadingMargin" constant="30" id="nsd-IQ-Api"/>
                                         <constraint firstItem="KLJ-E1-ZXN" firstAttribute="top" secondItem="mfT-fz-n2D" secondAttribute="topMargin" id="pJC-Lg-CgV"/>
                                         <constraint firstItem="LZb-QK-IY7" firstAttribute="centerX" secondItem="mfT-fz-n2D" secondAttribute="centerX" id="yLD-Nx-k2F"/>
+                                        <constraint firstItem="NMV-Re-KbB" firstAttribute="top" secondItem="mfT-fz-n2D" secondAttribute="top" id="zdz-XN-D6F"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
                                     <outlet property="Imager" destination="LZb-QK-IY7" id="L3Q-UP-b8g"/>
+                                    <outlet property="LikeButton" destination="NMV-Re-KbB" id="goB-tZ-BdG"/>
                                     <outlet property="Subtitle" destination="QXf-Pe-gII" id="7rw-BP-7ev"/>
                                     <outlet property="Title" destination="KLJ-E1-ZXN" id="7wH-FH-wTp"/>
                                 </connections>

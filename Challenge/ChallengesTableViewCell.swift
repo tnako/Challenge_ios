@@ -10,7 +10,6 @@ import UIKit
 
 class ChallengesTableViewCell: UITableViewCell {
     
-
     @IBOutlet weak var HeaderLabel: UILabel!
     @IBOutlet weak var ProgressBar: UIProgressView!
     @IBOutlet weak var TimerLabel: UILabel!
