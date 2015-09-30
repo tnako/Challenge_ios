@@ -104,6 +104,8 @@ class ChallengesController: UIViewController, UITableViewDataSource, UITableView
     }
     */
     
+    // ToDo: передача выбранного номера
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowChallenge" {
             print("ShowChallenge debug");

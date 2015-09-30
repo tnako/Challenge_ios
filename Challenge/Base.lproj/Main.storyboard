@@ -24,7 +24,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="OneRow" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="OneRow" id="pQs-9J-VDM" customClass="ChallengesTableViewCell" customModule="Challenge" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="396" height="65"/>
+                                        <rect key="frame" x="0.0" y="92" width="396" height="65"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pQs-9J-VDM" id="4f3-PU-aLM">
                                             <rect key="frame" x="0.0" y="0.0" width="363" height="64.5"/>
@@ -110,7 +110,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PhotoRow" id="ZUb-h1-DuW" customClass="ChallengeTableViewCell" customModule="Challenge" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="404" height="350"/>
+                                <rect key="frame" x="0.0" y="92" width="404" height="350"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZUb-h1-DuW" id="mfT-fz-n2D">
                                     <rect key="frame" x="0.0" y="0.0" width="404" height="349.5"/>
@@ -284,6 +284,9 @@
                     <tabBarItem key="tabBarItem" title="Profile" image="second" id="cPa-gy-q4n"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="666" height="667"/>
+                    <connections>
+                        <segue destination="ehS-fC-gqd" kind="show" identifier="Logout" id="s6b-px-wJC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -315,7 +318,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
                                 <connections>
-                                    <segue destination="49e-Tb-3d3" kind="embed" id="RL6-0f-s8y"/>
+                                    <segue destination="ehS-fC-gqd" kind="embed" id="cGn-MU-w5t"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -338,7 +341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vQ3-ZT-t8e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-802" y="65"/>
+            <point key="canvasLocation" x="-1662" y="31"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -416,11 +419,36 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wKj-MK-FqR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-802" y="705"/>
+            <point key="canvasLocation" x="-1662" y="605"/>
+        </scene>
+        <!--Auth Controller-->
+        <scene sceneID="SAh-WA-CNU">
+            <objects>
+                <viewController id="ehS-fC-gqd" customClass="AuthController" customModule="Challenge" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cwX-kW-9OO"/>
+                        <viewControllerLayoutGuide type="bottom" id="GID-eF-hHK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="s3T-A0-3Ee">
+                        <rect key="frame" x="0.0" y="0.0" width="666" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="AuthDone" id="nrQ-ql-5I2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iKb-z0-BbZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-856" y="31"/>
         </scene>
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="s6b-px-wJC"/>
+    </inferredMetricsTieBreakers>
 </document>

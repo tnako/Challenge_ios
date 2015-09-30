@@ -10,7 +10,8 @@ import Foundation
 import Starscream
 
 private let _SingletonASharedInstance = NetClient();
-let serverUrl = "ws://localhost:56887/";
+//let serverUrl = "ws://localhost:56887/";
+let serverUrl = "ws://echo.websocket.org";
 
 class NetClient: NSObject, WebSocketDelegate {
     class var sharedInstance : NetClient {
