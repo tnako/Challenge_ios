@@ -12,17 +12,19 @@ import FBSDKLoginKit
 
 class AuthController: UIViewController, FBSDKLoginButtonDelegate {
     
+    var fbLoginButton:FBSDKLoginButton?;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         if (FBSDKAccessToken.currentAccessToken() == nil) {
-            let loginButton = FBSDKLoginButton();
-            loginButton.readPermissions = ["public_profile", "email", "user_friends"];
-            loginButton.center = self.view.center;
+            fbLoginButton = FBSDKLoginButton();
+            fbLoginButton!.readPermissions = ["public_profile", "email", "user_friends"];
+            fbLoginButton!.center = self.view.center;
             
-            loginButton.delegate = self;
-            self.view.addSubview(loginButton);
+            fbLoginButton!.delegate = self;
+            self.view.addSubview(fbLoginButton!);
         }
     }
     
@@ -42,12 +44,17 @@ class AuthController: UIViewController, FBSDKLoginButtonDelegate {
         if (error != nil) {
             print("Login error: \(error.localizedDescription)")
         } else {
+            //ToDo: check success of login
+            fbLoginButton?.removeFromSuperview();
             //ToDo: save data to server
+
+
+            
         }
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        print("LogOut");
+        
     }
     
 }

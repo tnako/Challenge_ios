@@ -12,6 +12,8 @@ import FBSDKLoginKit
 
 class ProfileController: UIViewController, FBSDKLoginButtonDelegate {
 
+    @IBOutlet var imageURL: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +24,32 @@ class ProfileController: UIViewController, FBSDKLoginButtonDelegate {
         
         loginButton.delegate = self;
         self.view.addSubview(loginButton);
+        
+        
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "name, email, friends, id, birthday, picture, gender"])
+        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+            
+            if ((error) != nil)
+            {
+                // Process error
+                print("Error: \(error)")
+            }
+            else
+            {
+                print("fetched user: \(result)")
+                let pictureDict = result.objectForKey("picture") as! NSDictionary
+                let pictureData = pictureDict.objectForKey("data") as! NSDictionary
+                let pictureURL = pictureData.objectForKey("url") as! String
+                print("picture.data.url: \(pictureURL)")
+                
+                if let url = NSURL(string: pictureURL) {
+                    if let data = NSData(contentsOfURL: url){
+                        self.imageURL.image = UIImage(data: data)
+                    }
+                }
+            }
+        })
+        
     }
 
     override func didReceiveMemoryWarning() {
