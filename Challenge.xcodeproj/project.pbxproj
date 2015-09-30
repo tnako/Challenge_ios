@@ -18,6 +18,8 @@
 		83A22ACE1BB503A7006BD898 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83A22ACC1BB503A7006BD898 /* LaunchScreen.storyboard */; };
 		83A22AD71BB5C31D006BD898 /* ChallengesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A22AD61BB5C31D006BD898 /* ChallengesTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		83A22AD91BB65FF0006BD898 /* ChallengeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A22AD81BB65FF0006BD898 /* ChallengeDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		83FCBF281BBC0FFA00BC48A5 /* Connector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FCBF271BBC0FFA00BC48A5 /* Connector.swift */; settings = {ASSET_TAGS = (); }; };
+		83FCBF2A1BBC134600BC48A5 /* LauncherScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FCBF291BBC134600BC48A5 /* LauncherScreen.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		83A22ACF1BB503A7006BD898 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83A22AD61BB5C31D006BD898 /* ChallengesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesTableViewCell.swift; sourceTree = "<group>"; };
 		83A22AD81BB65FF0006BD898 /* ChallengeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeDetailViewController.swift; sourceTree = "<group>"; };
+		83FCBF271BBC0FFA00BC48A5 /* Connector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connector.swift; sourceTree = "<group>"; };
+		83FCBF291BBC134600BC48A5 /* LauncherScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LauncherScreen.swift; sourceTree = "<group>"; };
 		D4BDDA60655E9A8222C66849 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		ED74A09E7E2416F50EF8BC67 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				83A22AC11BB503A7006BD898 /* AppDelegate.swift */,
+				83FCBF261BBC0FE100BC48A5 /* Network */,
 				83A22AD51BB51428006BD898 /* Controller */,
 				83A22AC71BB503A7006BD898 /* Main.storyboard */,
 				83A22ACA1BB503A7006BD898 /* Assets.xcassets */,
@@ -99,8 +104,17 @@
 				837BF8671BB83BB2005D5B30 /* ChallengeTableViewCell.swift */,
 				83A22AD81BB65FF0006BD898 /* ChallengeDetailViewController.swift */,
 				837BF8691BB84683005D5B30 /* TakePhotoController.swift */,
+				83FCBF291BBC134600BC48A5 /* LauncherScreen.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		83FCBF261BBC0FE100BC48A5 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				83FCBF271BBC0FFA00BC48A5 /* Connector.swift */,
+			);
+			name = Network;
 			sourceTree = "<group>";
 		};
 		AEDBF9C3C4B38AF6CB6DD5D7 /* Frameworks */ = {
@@ -237,6 +251,8 @@
 				83A22AD91BB65FF0006BD898 /* ChallengeDetailViewController.swift in Sources */,
 				837BF8681BB83BB2005D5B30 /* ChallengeTableViewCell.swift in Sources */,
 				83A22AC21BB503A7006BD898 /* AppDelegate.swift in Sources */,
+				83FCBF281BBC0FFA00BC48A5 /* Connector.swift in Sources */,
+				83FCBF2A1BBC134600BC48A5 /* LauncherScreen.swift in Sources */,
 				83A22AC41BB503A7006BD898 /* ChallengesController.swift in Sources */,
 				837BF86A1BB84683005D5B30 /* TakePhotoController.swift in Sources */,
 			);
