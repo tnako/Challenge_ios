@@ -102,8 +102,16 @@ class ChallengesController: UIViewController, UITableViewDataSource, UITableView
         
         SelectedRow = indexPath.row;
     }
-    */
+
     
+    override func prefersStatusBarHidden() -> Bool {
+        if self.navigationController?.navigationBarHidden == true {
+            return true
+        } else {
+            return false
+        }
+    }
+    */
     // ToDo: передача выбранного номера
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

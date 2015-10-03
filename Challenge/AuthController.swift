@@ -13,6 +13,7 @@ import FBSDKLoginKit
 class AuthController: UIViewController, FBSDKLoginButtonDelegate {
     
     var fbLoginButton:FBSDKLoginButton?;
+    let network : NetClient = NetClient.sharedInstance;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,7 @@ class AuthController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidAppear(animated: Bool) {
         if (FBSDKAccessToken.currentAccessToken() != nil) {
+            print("Send seque AuthDone");
             self.performSegueWithIdentifier("AuthDone", sender: self);
         }
     }

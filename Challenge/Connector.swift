@@ -10,8 +10,8 @@ import Foundation
 import Starscream
 
 private let _SingletonASharedInstance = NetClient();
-//let serverUrl = "ws://localhost:56887/";
-let serverUrl = "ws://echo.websocket.org";
+let serverUrl = "ws://localhost:56887/";
+//let serverUrl = "ws://echo.websocket.org";
 
 class NetClient: NSObject, WebSocketDelegate {
     class var sharedInstance : NetClient {
@@ -19,6 +19,7 @@ class NetClient: NSObject, WebSocketDelegate {
     }
     
     var socket = WebSocket(url: NSURL(string: serverUrl)!);
+    var reconnectTime: Double = 0;
     
     var reconnectTimer = NSTimer();
 
@@ -44,6 +45,7 @@ class NetClient: NSObject, WebSocketDelegate {
         print("websocket is connected");
         
         reconnectTimer.invalidate();
+        reconnectTime = 3;
     }
     
     func websocketDidDisconnect(ws: WebSocket, error: NSError?) {
@@ -53,7 +55,19 @@ class NetClient: NSObject, WebSocketDelegate {
             print("websocket disconnected");
         }
         
-        reconnectTimer = NSTimer.scheduledTimerWithTimeInterval(3, target:self, selector: Selector("reconnect"), userInfo: nil, repeats: true)
+        if (reconnectTime < 300) {
+            reconnectTime += 0.5;
+        }
+        
+        reconnectTimer.invalidate();
+        reconnectTimer = NSTimer.scheduledTimerWithTimeInterval(reconnectTime, target:self, selector: Selector("reconnect"), userInfo: nil, repeats: false);
+        
+        let vc : UIViewController! = UIApplication.sharedApplication().keyWindow!.rootViewController!.storyboard!.instantiateViewControllerWithIdentifier("ConnectingScreen")
+        let topViewController = UIApplication.topViewController();
+
+        if (topViewController?.restorationIdentifier != vc.restorationIdentifier) {
+            topViewController?.showViewController(vc, sender: topViewController);
+        }
     }
     
     func websocketDidReceiveMessage(ws: WebSocket, text: String) {

@@ -325,29 +325,18 @@
                                     <segue destination="RwO-E2-haG" kind="embed" id="LtH-7I-k4G"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z7g-Jr-8Vq">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
-                                <connections>
-                                    <segue destination="ehS-fC-gqd" kind="embed" id="cGn-MU-w5t"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="MmS-bw-mrV" firstAttribute="leading" secondItem="vEi-B1-ZMP" secondAttribute="leading" id="3yx-sW-wTb"/>
-                            <constraint firstAttribute="trailing" secondItem="z7g-Jr-8Vq" secondAttribute="trailing" id="5Oc-qz-BLl"/>
-                            <constraint firstItem="z7g-Jr-8Vq" firstAttribute="top" secondItem="MmS-bw-mrV" secondAttribute="top" id="DwT-xg-AYY"/>
                             <constraint firstItem="MmS-bw-mrV" firstAttribute="top" secondItem="vEi-B1-ZMP" secondAttribute="top" id="MuF-9P-rp0"/>
-                            <constraint firstItem="WPj-SC-ydA" firstAttribute="top" secondItem="z7g-Jr-8Vq" secondAttribute="bottom" id="cmY-Sh-4CI"/>
                             <constraint firstAttribute="trailing" secondItem="MmS-bw-mrV" secondAttribute="trailing" id="ctn-1A-Uxl"/>
-                            <constraint firstItem="z7g-Jr-8Vq" firstAttribute="leading" secondItem="vEi-B1-ZMP" secondAttribute="leading" id="dJP-PP-yhS"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="BodyView" destination="z7g-Jr-8Vq" id="BCv-ih-NjF"/>
                         <outlet property="HeaderView" destination="MmS-bw-mrV" id="Cbr-nW-YWe"/>
+                        <segue destination="ehS-fC-gqd" kind="show" identifier="Connected" id="Ce5-0c-P1i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vQ3-ZT-t8e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -379,7 +368,7 @@
         <!--Challenges-->
         <scene sceneID="FpR-H8-f6f">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wb7-PZ-ftX" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="Wb7-PZ-ftX" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Challenges" image="first" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="S6G-ix-wCL">
@@ -388,6 +377,11 @@
                         <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="5cG-Sa-3e6">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </toolbar>
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="pQJ-03-3Hy"/>
                     </connections>
@@ -405,7 +399,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="DJF-Fr-G2B">
-                                <rect key="frame" x="188" y="5" width="20" height="95"/>
+                                <rect key="frame" x="188.5" y="5" width="20" height="95"/>
                                 <animations/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connecting to server..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5tF-Et-lB5">
@@ -441,7 +435,7 @@
                         <viewControllerLayoutGuide type="bottom" id="GID-eF-hHK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="s3T-A0-3Ee">
-                        <rect key="frame" x="0.0" y="0.0" width="666" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -460,6 +454,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="s6b-px-wJC"/>
+        <segue reference="Ce5-0c-P1i"/>
     </inferredMetricsTieBreakers>
 </document>
