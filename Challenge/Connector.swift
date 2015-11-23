@@ -8,6 +8,8 @@
 
 import Foundation
 import Starscream
+import SwiftEventBus
+import SwiftyJSON
 
 private let _SingletonASharedInstance = NetClient();
 let serverUrl = "ws://localhost:56887/";
@@ -32,6 +34,11 @@ class NetClient: NSObject, WebSocketDelegate {
     func connect() {
         socket.delegate = self;
         socket.connect();
+        
+        SwiftEventBus.onMainThread(self, name: "getChallenges") { result in
+            //self.socket.writeString(JSON(["name":"Challenges", "action": "getList", "data": ""]).rawString()!);
+            self.socket.writeString("{\"name\":\"Challenges\", \"action\": \"getList\", \"data\": \"\"}");
+        }
     }
     
     func reconnect() {
@@ -44,6 +51,8 @@ class NetClient: NSObject, WebSocketDelegate {
     func websocketDidConnect(ws: WebSocket) {
         print("websocket is connected");
         
+        SwiftEventBus.post("net_connect")
+        
         reconnectTimer.invalidate();
         reconnectTime = 3;
     }
@@ -54,6 +63,8 @@ class NetClient: NSObject, WebSocketDelegate {
         } else {
             print("websocket disconnected");
         }
+        
+        SwiftEventBus.post("net_disconnect")
         
         if (reconnectTime < 300) {
             reconnectTime += 0.5;
@@ -71,7 +82,18 @@ class NetClient: NSObject, WebSocketDelegate {
     }
     
     func websocketDidReceiveMessage(ws: WebSocket, text: String) {
-        print("Received text: \(text)");
+        if let dataFromString = text.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
+            let json = JSON(data: dataFromString)
+            print("Received message text JSON: \(json["action"].stringValue)")
+            
+            if (json["name"].stringValue == "Challenges") {
+                if (json["action"].stringValue == "getList") {
+                    SwiftEventBus.post("challenges_list", sender: json["data"].object)
+                }
+            }
+        }
+        
+        //SwiftEventBus.post("net_message", sender: text)
     }
     
     func websocketDidReceiveData(ws: WebSocket, data: NSData) {

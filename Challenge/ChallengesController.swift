@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import SwiftEventBus
+import SwiftyJSON
 
 
 // ToDo: разобраться с датой, учитывая часовой пояс
 
 struct Challenge {
-    var num: UInt?;
+    var num: Int?;
     var action: String?;
     var start: timeb?;
     var end: timeb?;
@@ -20,7 +22,7 @@ struct Challenge {
     var place: String?;
     var person: String?;
     
-    init(num: UInt?, action: String?,
+    init(num: Int?, action: String?,
         start: timeb?, end: timeb?,
         item: String?, place: String?, person: String?) {
             self.num = num;
@@ -45,11 +47,23 @@ class ChallengesController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for index:UInt in 1...62 {
-            var endDate:timeb = timeb();
-            endDate.time  = time_t(arc4random_uniform(98) + 1);
-            ChallengesArray.append(Challenge(num: index, action: "drink", start: timeb(), end: endDate, item: "", place: "", person: ""));
+        SwiftEventBus.post("getChallenges")
+        
+        SwiftEventBus.onMainThread(self, name: "challenges_list") { result in
+            let list = (result?.object as! NSArray) as Array;
+            self.ChallengesArray.removeAll()
+            
+            for (var i = 0; i < list.count; ++i) {
+               print("one line : \(list[i])")
+                let json = JSON(list[i])
+                var endDate:timeb = timeb();
+                endDate.time  = time_t(arc4random_uniform(98) + 1);
+                self.ChallengesArray.append(Challenge(num: json["challenge_id"].intValue, action: json["action_id"].stringValue, start: timeb(), end: endDate, item: json["item_id"].stringValue, place: json["where_id"].stringValue, person: json["who_id"].stringValue));
+            }
+            
+            self.ChallengesTable.reloadData()
         }
+
         
         ChallengesTable.delegate = self
         ChallengesTable.dataSource = self
